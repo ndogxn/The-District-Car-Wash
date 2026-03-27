@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 50% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 222 40% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 222 40% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 192 100% 50%;
+    --primary-foreground: 222 50% 7%;
+
+    --secondary: 222 30% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 222 30% 15%;
+    --muted-foreground: 220 15% 60%;
+
+    --accent: 192 100% 50%;
+    --accent-foreground: 222 50% 7%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 222 30% 18%;
+    --input: 222 30% 18%;
+    --ring: 192 100% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 222 40% 8%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 192 100% 50%;
+    --sidebar-primary-foreground: 222 50% 7%;
+    --sidebar-accent: 222 30% 15%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 222 30% 18%;
+    --sidebar-ring: 192 100% 50%;
+
+    --gold: 45 100% 51%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glow-cyan {
+    box-shadow: 0 0 20px hsl(192 100% 50% / 0.3), 0 0 40px hsl(192 100% 50% / 0.1);
+  }
+  .glow-cyan-strong {
+    box-shadow: 0 0 30px hsl(192 100% 50% / 0.5), 0 0 60px hsl(192 100% 50% / 0.2);
+  }
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(192 100% 50%), hsl(192 80% 70%));
+  }
+  .glass {
+    @apply backdrop-blur-xl bg-background/80 border-b border-border/50;
+  }
+  .card-glow {
+    @apply border border-border/50 transition-all duration-500;
+  }
+  .card-glow:hover {
+    border-color: hsl(192 100% 50% / 0.5);
+    box-shadow: 0 0 30px hsl(192 100% 50% / 0.15), inset 0 0 30px hsl(192 100% 50% / 0.05);
+  }
+}
+
+/* Shimmer animation for CTA buttons */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes slowZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+/* Water particle effect */
+@keyframes particle-float {
+  0% { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.2; }
+  100% { transform: translateY(-10vh) translateX(100px) scale(1); opacity: 0; }
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: hsl(192 100% 50% / 0.4);
+  border-radius: 50%;
+  animation: particle-float linear infinite;
+}
